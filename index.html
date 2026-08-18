@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halsten × Lucas Brümmer — Proposta de Parceria Comercial</title>
+<meta name="description" content="Proposta de parceria comercial entre a Halsten e Lucas Brümmer para geração, desenvolvimento e acompanhamento de novas oportunidades de venda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2EEE3;
+    --panel: #FFFFFF;
+    --line: #DBD3BE;
+    --ink: #1B1810;
+    --ink-soft: #5B5645;
+    --ink-faint: #8C8570;
+    --gold: #A9702E;
+    --gold-ink: #8C5A22;
+
+    --dark-bg: #14130E;
+    --dark-bg-2: #1C1A12;
+    --dark-ink: #F2EEE3;
+    --dark-ink-soft: #B7AE96;
+    --dark-line: #3A3626;
+    --gold-bright: #DBA659;
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #15140F; --panel: #1D1B14; --line: #332F20;
+      --ink: #F2EEE3; --ink-soft: #B7AE96; --ink-faint: #8C8570;
+      --gold: #DBA659; --gold-ink: #DBA659;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #15140F; --panel: #1D1B14; --line: #332F20;
+    --ink: #F2EEE3; --ink-soft: #B7AE96; --ink-faint: #8C8570;
+    --gold: #DBA659; --gold-ink: #DBA659;
+  }
+  :root[data-theme="light"] {
+    --paper: #F2EEE3; --panel: #FFFFFF; --line: #DBD3BE;
+    --ink: #1B1810; --ink-soft: #5B5645; --ink-faint: #8C8570;
+    --gold: #A9702E; --gold-ink: #8C5A22;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 clamp(22px, 6vw, 64px);
+  }
+  .container.narrow { max-width: 780px; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+
+  .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gold-ink);
+    margin: 0 0 22px;
+  }
+  .section.dark .eyebrow { color: var(--gold-bright); }
+
+  .section { padding: clamp(76px, 13vw, 148px) 0; position: relative; }
+  .section.dark { background: var(--dark-bg); color: var(--dark-ink); }
+  .section.dark .ink-soft { color: var(--dark-ink-soft); }
+  .ink-soft { color: var(--ink-soft); }
+
+  .lede {
+    font-size: clamp(16.5px, 1.8vw, 19px);
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+  .section.dark .lede { color: var(--dark-ink-soft); }
+
+  h2.title {
+    font-size: clamp(25px, 3.2vw, 37px);
+    line-height: 1.26;
+    max-width: 17ch;
+    margin-bottom: 22px;
+  }
+  h2.title.wide { max-width: 22ch; }
+
+  .quote-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(19px, 2.4vw, 25px);
+    line-height: 1.5;
+    max-width: 30ch;
+    color: var(--ink);
+    margin-top: 36px;
+  }
+  .section.dark .quote-line { color: var(--dark-ink); }
+  .quote-line.full-line { max-width: 46ch; margin: 48px auto 0; text-align: center; font-size: clamp(20px, 2.6vw, 27px); text-wrap: balance; }
+
+  /* ===== top bar ===== */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px clamp(22px, 6vw, 64px);
+    font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--dark-ink-soft);
+    pointer-events: none;
+    background: rgba(15,14,10,0.55);
+  }
+  .topbar span { color: #F2EEE3; font-weight: 600; }
+  .topbar .count { font-variant-numeric: tabular-nums; }
+  .topbar .brand { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+
+  /* ===== hero / full-bleed photo sections ===== */
+  .photo-section {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    color: #F2EEE3;
+    background-size: cover;
+    background-position: center;
+  }
+  .photo-section::after {
+    content: '';
+    position: absolute; inset: 0;
+  }
+  .hero { align-items: flex-end; background-image: url('img/hero-exterior.jpg'); background-position: 78% 38%; }
+  .hero::after { background: linear-gradient(180deg, rgba(10,9,6,0.2) 0%, rgba(10,9,6,0.4) 55%, rgba(10,9,6,0.95) 100%); }
+  .photo-section .container { position: relative; z-index: 2; }
+  .hero .container { padding-bottom: clamp(44px, 9vw, 96px); width: 100%; text-align: center; }
+  .hero .eyebrow { color: var(--gold-bright); }
+  .hero h1 {
+    font-size: clamp(20px, 7.5vw, 68px);
+    line-height: 1.08;
+    white-space: nowrap;
+  }
+  h1 .x, h2 .x { opacity: 0.5; font-weight: 300; padding: 0 0.06em; }
+  .hero .subhead {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(12.5px, 1.85vw, 23px);
+    color: #E7DFC8;
+    margin-top: 20px;
+    white-space: nowrap;
+  }
+  @media (max-width: 560px) {
+    .hero .subhead { white-space: normal; max-width: 32ch; font-size: clamp(15px, 4vw, 18px); }
+  }
+
+  /* ===== stat trio (big numbers, used sparingly) ===== */
+  .stat-trio { display: flex; flex-wrap: wrap; gap: 36px 52px; margin-top: 44px; }
+  .stat-trio .s b {
+    display: block; font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 34px); color: var(--gold-bright); line-height: 1;
+  }
+  .stat-trio .s span { display: block; font-size: 13px; color: var(--dark-ink-soft); margin-top: 10px; max-width: 20ch; }
+  .credential-line { margin-top: 8px; }
+  .credential-line + .credential-line { margin-top: 4px; }
+  .credential-line .role { display: block; font-size: 12.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-bright); font-weight: 700; }
+  .credential-line .loc { display: block; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dark-ink-soft); font-weight: 500; margin-top: 2px; }
+
+  .profile-grid { display: grid; grid-template-columns: 1.3fr 0.95fr 0.95fr; gap: clamp(28px, 4.2vw, 52px); align-items: start; }
+  .profile-grid img {
+    width: 100%; height: auto; aspect-ratio: 0.74; object-fit: cover; object-position: 30% top;
+    filter: grayscale(0.45) saturate(0.85) sepia(0.06) contrast(1.05);
+    outline: 1px solid var(--dark-line);
+    outline-offset: 10px;
+    border-radius: 14px;
+  }
+  .profile-col-stats { padding-top: 0; }
+  .profile-col-stats .eyebrow { margin-bottom: 8px; }
+  .profile-col-stats .stat-trio { flex-direction: column; gap: 10px; margin-top: 8px; }
+  .profile-col-stats .stat-trio .s span { margin-top: 3px; }
+  .profile-col-stats .stat-trio .s b { font-size: clamp(30px, 3.4vw, 38px); }
+  .profile-col-text .title { font-size: clamp(23px, 2.6vw, 32px); max-width: 18ch; margin-bottom: 30px; }
+  .profile-col-text .lede { font-size: 16px; line-height: 1.7; margin-top: 36px; text-align: left; }
+  @media (max-width: 900px) {
+    .profile-grid { grid-template-columns: 1fr; gap: 32px; align-items: start; }
+    .profile-grid img { aspect-ratio: 4/4.6; max-width: 360px; margin: 0 auto; }
+    .profile-col-stats { order: 2; }
+    .profile-col-img { order: 1; }
+    .profile-col-text { order: 3; }
+    .profile-col-text .title { font-size: clamp(25px, 5.5vw, 34px); max-width: 22ch; }
+    .profile-col-text .lede { font-size: 16.5px; line-height: 1.6; margin-top: 18px; }
+  }
+
+  /* ===== plain editorial columns (no cards, no borders) ===== */
+  .idea-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+  .idea-cols .idea { padding-top: 20px; border-top: 1px solid var(--line); }
+  .section.dark .idea-cols .idea { border-color: var(--dark-line); }
+  .idea-cols .idea .num { display: block; font-family: var(--font-display); font-style: italic; font-size: 15px; letter-spacing: 0.02em; color: var(--gold-ink); font-weight: 500; margin-bottom: 14px; }
+  .section.dark .idea-cols .idea .num { color: var(--gold-bright); }
+  .idea-cols .idea h3 { font-family: var(--font-body); font-size: 13.5px; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 10px; white-space: nowrap; }
+  .idea-cols .idea p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+  .section.dark .idea-cols .idea p { color: var(--dark-ink-soft); }
+  @media (max-width: 780px) { .idea-cols { grid-template-columns: 1fr; gap: 30px; } }
+
+  /* ===== word chain (editorial process flow — no boxes, reflows as text) ===== */
+  .word-chain {
+    margin-top: 32px;
+    font-size: clamp(14px, 1.7vw, 18px);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 2.3;
+    color: var(--ink-soft);
+    max-width: 70ch;
+  }
+  .section.dark .word-chain { color: var(--dark-ink-soft); }
+  .word-chain.dense { font-size: clamp(12.5px, 1.35vw, 15px); letter-spacing: 0.015em; line-height: 2.5; }
+  .word-chain .arrow { color: var(--gold-ink); margin: 0 8px; font-weight: 400; }
+  .section.dark .word-chain .arrow { color: var(--gold-bright); }
+  .word-chain strong { color: var(--ink); }
+  .section.dark .word-chain strong { color: var(--dark-ink); }
+  .loop-note { margin-top: 10px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .section.dark .loop-note { color: var(--dark-ink-soft); }
+
+  /* ===== hub diagram (Halsten at center, 4 fronts) ===== */
+  .hub {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    grid-template-areas: ". top ." "left center right" ". bottom .";
+    gap: 92px 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .hub .h-top, .hub .h-left, .hub .h-right, .hub .h-bottom {
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .hub .h-top:hover, .hub .h-left:hover, .hub .h-right:hover, .hub .h-bottom:hover {
+    transform: scale(1.22);
+  }
+  .hub .h-top { grid-area: top; }
+  .hub .h-left { grid-area: left; }
+  .hub .h-right { grid-area: right; }
+  .hub .h-bottom { grid-area: bottom; }
+  .hub .num { display: block; font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--gold-bright); margin-bottom: 10px; }
+  .hub .h-center {
+    position: relative;
+    grid-area: center;
+    border: 1px solid var(--gold-ink);
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(219,166,89,0.10), transparent 72%);
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-style: italic; font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--gold-bright);
+    margin: 0 auto;
+    width: min(160px, 60%);
+  }
+  .hub .h-ring {
+    position: absolute;
+    inset: clamp(-36px, -8%, -24px);
+    border: 1px solid rgba(219,166,89,0.45);
+    border-radius: 999px;
+    pointer-events: none;
+    animation: hubPulse 2.6s ease-out infinite;
+  }
+  @keyframes hubPulse {
+    0% { transform: scale(0.82); opacity: 0.65; }
+    100% { transform: scale(1.28); opacity: 0; }
+  }
+  .hub h3 { font-size: 15px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; color: var(--dark-ink); }
+  .hub p { font-size: 14.5px; color: var(--dark-ink-soft); line-height: 1.6; }
+  @media (max-width: 700px) {
+    .hub { grid-template-columns: 1fr; grid-template-areas: "center" "top" "right" "bottom" "left"; gap: 34px; }
+    .hub .h-center { width: 132px; }
+    .hub .h-ring { display: none; }
+  }
+
+  /* ===== photo mosaic ===== */
+  .mosaic { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 48px; }
+  .mosaic img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.94) contrast(1.03); display: block; }
+  .mosaic .m-wide { grid-column: 1 / -1; aspect-ratio: 16/8; }
+  .mosaic .m-half { aspect-ratio: 4/5; margin: 0; position: relative; }
+  .mosaic .m-half figcaption {
+    position: absolute; left: 12px; right: 12px; bottom: 12px;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+    color: #F2EEE3; text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  }
+  @media (max-width: 700px) { .mosaic { grid-template-columns: 1fr 1fr; } .mosaic .m-half { aspect-ratio: 4/3; } }
+
+  /* ===== story gallery (swipeable creatives + lightbox) ===== */
+  .story-gallery-wrap { position: relative; }
+  .gallery-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 5;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink);
+    font-family: var(--font-display); font-size: 20px; line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 12px 26px -12px rgba(27,24,16,0.35);
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .gallery-arrow:hover { border-color: var(--gold-ink); }
+  .gallery-arrow:disabled { opacity: 0; pointer-events: none; }
+  .gallery-arrow.prev { left: -14px; }
+  .gallery-arrow.next { right: -14px; }
+  @media (max-width: 640px) { .gallery-arrow { display: none; } }
+
+  .story-gallery {
+    margin-top: 44px;
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-ink) transparent;
+  }
+  .story-gallery::-webkit-scrollbar { height: 6px; }
+  .story-gallery::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+  .story-gallery .story-item {
+    appearance: none;
+    flex: 0 0 auto;
+    width: clamp(180px, 24vw, 250px);
+    aspect-ratio: 9/16;
+    scroll-snap-align: start;
+    cursor: zoom-in;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--panel);
+    padding: 0;
+    box-shadow: 0 20px 40px -26px rgba(27,24,16,0.35);
+  }
+  .story-gallery .story-item:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
+  .story-gallery .story-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease; }
+  .story-gallery .story-item:hover img { transform: scale(1.04); }
+  .gallery-hint { margin-top: 14px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .section.dark .gallery-hint { color: var(--dark-ink-soft); }
+
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(10,9,6,0.94);
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: min(92vw, 480px); max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6); }
+  .lightbox-close {
+    position: absolute; top: 22px; right: clamp(22px, 6vw, 64px);
+    color: #F2EEE3; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
+    background: none; border: 1px solid rgba(242,238,227,0.3); border-radius: 999px;
+    padding: 9px 20px; cursor: pointer; font-family: var(--font-body);
+  }
+  .lightbox-close:hover { border-color: rgba(242,238,227,0.7); }
+  .lightbox-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(242,238,227,0.3);
+    background: rgba(20,19,14,0.4);
+    color: #F2EEE3;
+    font-family: var(--font-display); font-size: 22px; line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox-arrow:hover { border-color: rgba(242,238,227,0.7); }
+  .lightbox-arrow.prev { left: clamp(10px, 4vw, 40px); }
+  .lightbox-arrow.next { right: clamp(10px, 4vw, 40px); }
+  .lightbox-count {
+    position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+    color: rgba(242,238,227,0.7); font-size: 12px; letter-spacing: 0.08em;
+  }
+
+  /* ===== trophy wall (portrait + landscape achievement photos, unified tone) ===== */
+  .trophy-wall {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    grid-auto-rows: clamp(260px, 28vw, 380px);
+    gap: 26px 22px;
+  }
+  .trophy-wall figure { margin: 0; height: 100%; display: flex; flex-direction: column; }
+  .trophy-wall img {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    object-fit: cover;
+    border: 1px solid var(--dark-line);
+    border-radius: 14px;
+    filter: grayscale(0.45) saturate(0.85) sepia(0.06) contrast(1.05);
+  }
+  .trophy-wall figcaption { margin-top: 14px; }
+  .trophy-wall figcaption .tag {
+    display: block;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+    color: var(--gold-bright); margin-bottom: 4px;
+  }
+  .trophy-wall figcaption .desc { font-size: 12.5px; color: var(--dark-ink-soft); line-height: 1.5; }
+  @media (max-width: 700px) {
+    .trophy-wall { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 30px; }
+    .trophy-wall img { aspect-ratio: 4/3.3; flex: none; }
+  }
+
+  .territory-line {
+    margin-top: 22px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(17px, 2vw, 21px);
+    color: var(--ink-soft);
+    max-width: 62ch;
+    line-height: 1.7;
+  }
+
+  /* ===== plain list (scope / questions — no cards, no icons) ===== */
+  .plain-list { margin-top: 28px; display: flex; flex-direction: column; }
+  .plain-list li { list-style: none; padding: 16px 0; border-top: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); }
+  .plain-list li:last-child { border-bottom: 1px solid var(--line); }
+  .section.dark .plain-list li { border-color: var(--dark-line); color: var(--dark-ink-soft); }
+
+  .scope-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(30px, 6vw, 72px); margin-top: 12px; }
+  @media (max-width: 780px) { .scope-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .scope-grid h3 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--gold-ink); margin-bottom: 16px; }
+
+  .huge-figure {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 13vw, 140px);
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--gold-ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .section.dark .huge-figure { color: var(--gold-bright); }
+  #s10 .huge-figure {
+    margin-top: 8px;
+    padding: 40px 0;
+    border-top: 1px solid var(--dark-line);
+    border-bottom: 1px solid var(--dark-line);
+  }
+  #s10 .figure-secondary {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--dark-ink-soft);
+    margin-top: 16px;
+  }
+  @media (max-width: 480px) {
+    #s10 .huge-figure { font-size: clamp(40px, 15vw, 64px); }
+  }
+
+  .disclaimer {
+    margin-top: 30px; font-size: 12px; color: var(--ink-faint);
+    max-width: 56ch;
+  }
+  .section.dark .disclaimer { color: var(--dark-ink-soft); }
+
+  footer.cta {
+    background: var(--dark-bg-2);
+    color: var(--dark-ink);
+    padding: clamp(72px, 13vw, 130px) 0 52px;
+    text-align: center;
+    background-image: linear-gradient(180deg, rgba(20,19,14,0.55), rgba(20,19,14,0.93)), url('img/entrada.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  footer.cta .container { display: flex; flex-direction: column; align-items: center; }
+  footer.cta .eyebrow { color: var(--gold-bright); }
+  footer.cta h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 3.6vw, 36px); max-width: 24ch; }
+  footer.cta .quote-line { max-width: 34ch; color: #F2EEE3; margin-top: 22px; }
+  footer.cta .word-list {
+    margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 22px;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark-ink-soft); font-weight: 600;
+  }
+  footer.cta .word-list span:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 3px;
+    border-radius: 999px;
+    background: var(--gold-bright);
+    margin-left: 22px;
+    vertical-align: middle;
+    opacity: 0.7;
+  }
+  footer.cta .brandline {
+    margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--dark-line);
+    font-size: 12.5px; letter-spacing: 0.05em; color: var(--dark-ink-soft);
+  }
+  footer.cta .brandline strong { color: var(--dark-ink); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="brand">Halsten × Lucas Brümmer</span>
+  <span class="count"><span id="secNow">01</span> / 13</span>
+</div>
+
+<!-- 01 — ABERTURA -->
+<section class="photo-section hero" id="s1" data-n="01">
+  <div class="container">
+    <p class="eyebrow">Proposta de parceria comercial</p>
+    <h1>Halsten <span class="x">×</span> Lucas Brümmer</h1>
+    <p class="subhead">Uma estrutura comercial para ampliar a geração e o desenvolvimento de novas oportunidades para a Halsten.</p>
+  </div>
+</section>
+
+<!-- 02 — LUCAS BRÜMMER -->
+<section class="section dark" id="s2" data-n="02">
+  <div class="container">
+    <div class="profile-grid">
+      <div class="profile-col-text">
+        <h2 class="title wide">Experiência comercial aplicada a uma nova frente de negócios.</h2>
+
+        <p class="lede">Uma trajetória de destaque dentro da Plaenge, construída na gestão e no desenvolvimento de múltiplos profissionais campeões de vendas — complementada por treinamentos e estudos sobre os mercados imobiliários da Ásia e Europa.</p>
+      </div>
+      <div class="profile-col-stats">
+        <p class="eyebrow">02 — Lucas Brümmer</p>
+        <div class="stat-trio">
+          <div class="s"><b>+R$ 320 mi</b><span>VGV sob gestão</span></div>
+          <div class="s"><b>+R$ 200 mil</b><span>Premiações</span></div>
+          <div class="s"><b>+6 anos</b><span>de experiência em gestão</span></div>
+        </div>
+        <div class="credential-line"><span class="role">Corretores Campeões</span><span class="loc">Cidade das Águas</span></div>
+        <div class="credential-line"><span class="role">Gestor Campeão</span><span class="loc">Cidade das Águas</span></div>
+        <div class="credential-line"><span class="role">Gerente Campeão</span><span class="loc">VEXT</span></div>
+      </div>
+      <div class="profile-col-img">
+        <img src="img/lucas-portrait.jpg" alt="Lucas Brümmer discursando no palco do VEXT Day">
+      </div>
+    </div>
+
+    <p class="quote-line full-line">Experiência em gestão, vendas e desenvolvimento comercial aplicada diretamente à comercialização da Halsten.</p>
+
+    <div class="trophy-wall">
+      <figure>
+        <img src="img/lucas-conquista-trofeu.jpg" alt="Lucas Brümmer premiado com troféu de reconhecimento em cerimônia do setor" style="object-position: center top;">
+        <figcaption><span class="tag">Reconhecimento individual</span><span class="desc">Prêmio de destaque em cerimônia do setor imobiliário.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/lucas-conquista-gerente-campeao.jpg" alt="Lucas Brümmer recebendo o prêmio Gerente Campeão da VEXT Imob, cheque de R$ 10.000 no palco do VEXT Day">
+        <figcaption><span class="tag">Gerente Campeão — VEXT Imob</span><span class="desc">Prêmio de R$ 10.000 pela liderança da equipe campeã em vendas.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/lucas-conquista-arium.jpg" alt="Lucas Brümmer, corretor campeão de vendas Arium e Nola, com passagem premiada para Copenhague e Londres">
+        <figcaption><span class="tag">Corretor campeão — Arium &amp; Nola</span><span class="desc">Viagem premiada a Copenhague e Londres.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/lucas-equipe-podio.jpg" alt="Equipe formada e liderada por Lucas Brümmer na VEXT Imob, celebrando o 1º lugar em vendas">
+        <figcaption><span class="tag">Equipe liderada por Lucas</span><span class="desc">1º lugar em vendas na VEXT Imob.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/lucas-viagem-jan-gehl.jpg" alt="Lucas Brümmer em visita ao escritório do arquiteto Jan Gehl em Copenhagen, Dinamarca">
+        <figcaption><span class="tag">Escritório Jan Gehl — Copenhagen</span><span class="desc">Visita ao escritório de Jan Gehl, na Dinamarca.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/lucas-viagem-canton-fair.jpg" alt="Lucas Brümmer em visita à Canton Fair em Guangzhou, China">
+        <figcaption><span class="tag">Canton Fair — Guangzhou</span><span class="desc">Visita à Canton Fair, na China.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — A PROPOSTA COMERCIAL -->
+<section class="section" id="s3" data-n="03">
+  <div class="container">
+    <p class="eyebrow">03 — A proposta comercial</p>
+    <h2 class="title wide">Uma nova frente comercial para a Halsten.</h2>
+    <p class="lede">Uma operação complementar amplia a presença da Halsten. Alcança novos potenciais compradores e transforma esse interesse em oportunidades comerciais conduzidas diretamente pelo Lucas.</p>
+
+    <div class="idea-cols">
+      <div class="idea">
+        <span class="num">01</span>
+        <h3>Comunicação qualificada</h3>
+        <p>Apresentar a Halsten através dos argumentos que realmente diferenciam cada empreendimento.</p>
+      </div>
+      <div class="idea">
+        <span class="num">02</span>
+        <h3>Geração ativa de oportunidades</h3>
+        <p>Utilizar mídia para levar essa comunicação a novos potenciais compradores.</p>
+      </div>
+      <div class="idea">
+        <span class="num">03</span>
+        <h3>Condução comercial</h3>
+        <p>Conduzir cada oportunidade por um processo estruturado de atendimento, qualificação, acompanhamento e evolução comercial.</p>
+      </div>
+    </div>
+
+    <p class="quote-line full-line">Não se trata de uma campanha isolada. Trata-se da construção de uma nova frente comercial para os empreendimentos Halsten.</p>
+  </div>
+</section>
+
+<!-- 04 — A OPERAÇÃO -->
+<section class="section dark" id="s4" data-n="04">
+  <div class="container">
+    <p class="eyebrow">04 — A operação</p>
+    <h2 class="title wide">Uma única operação conectando comunicação, mídia, atendimento e inteligência comercial.</h2>
+
+    <div class="hub">
+      <div class="h-top"><span class="num">01</span><h3>Comunicação</h3><p>Criativos qualificados construídos a partir dos diferenciais reais da Halsten.</p></div>
+      <div class="h-left"><span class="num">04</span><h3>Inteligência</h3><p>Dados e relatórios gerenciais utilizados para acompanhar a operação e direcionar decisões.</p></div>
+      <div class="h-center"><span class="h-ring"></span>Halsten</div>
+      <div class="h-right"><span class="num">02</span><h3>Performance</h3><p>Mídia utilizada para ampliar alcance, gerar demanda e alimentar continuamente a operação.</p></div>
+      <div class="h-bottom"><span class="num">03</span><h3>Comercial</h3><p>Atendimento realizado com metodologia, experiência e estratégia comercial.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — COMUNICAÇÃO QUE VALORIZA O PRODUTO -->
+<section class="section" id="s5" data-n="05">
+  <div class="container">
+    <p class="eyebrow">05 — Comunicação que valoriza o produto</p>
+    <h2 class="title wide">Cada diferencial dos empreendimentos Halsten se transforma em uma oportunidade de comunicação.</h2>
+    <p class="territory-line">Localização · Arquitetura · Plantas · Lifestyle · Lazer · Wellness · Condição comercial · Unidades · Experiência</p>
+    <p class="lede" style="margin-top:24px;">Não haverá “um anúncio”. Haverá uma biblioteca de narrativas e criativos capazes de testar diferentes motivações de compra — construídos a partir das imagens e dos diferenciais reais de cada lançamento.</p>
+
+    <div class="mosaic">
+      <figure class="m-half"><img src="img/essenza.jpg" alt="Fachada do empreendimento Essenza, Halsten"><figcaption>Essenza</figcaption></figure>
+      <figure class="m-half"><img src="img/nola.jpg" alt="Fachada do empreendimento Nola, Halsten"><figcaption>Nola</figcaption></figure>
+      <figure class="m-half"><img src="img/pulse.jpg" alt="Fachada do empreendimento Pulse, Halsten"><figcaption>Pulse</figcaption></figure>
+      <figure class="m-half"><img src="img/arium.jpg" alt="Fachada do empreendimento Arium, Halsten"><figcaption>Arium</figcaption></figure>
+      <figure class="m-half"><img src="img/massimo.jpg" alt="Fachada do empreendimento Massimo, Halsten"><figcaption>Massimo</figcaption></figure>
+      <figure class="m-half"><img src="img/cora.jpg" alt="Fachada do empreendimento Cora, Halsten"><figcaption>Cora</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — ECOSSISTEMA DIGITAL DE CONVERSÃO -->
+<section class="section dark" id="s6" data-n="06">
+  <div class="container">
+    <p class="eyebrow">06 — Ecossistema digital de conversão</p>
+    <h2 class="title wide">Um ambiente digital próprio para aprofundar o interesse pela Halsten.</h2>
+
+    <div class="word-chain">
+      Mídia <span class="arrow">→</span> <strong>Experiência digital</strong> <span class="arrow">→</span> Relacionamento <span class="arrow">→</span> Oportunidade
+    </div>
+
+    <p class="lede" style="margin-top:36px;">Essa estrutura digital aprofunda o interesse pela Halsten. Apresenta cada empreendimento, capta oportunidades reais e mantém o relacionamento vivo com cada potencial comprador ao longo de toda a jornada — registrando comportamento, construindo audiências e reconectando quem já demonstrou interesse.</p>
+  </div>
+</section>
+
+<!-- 07 — ATENDIMENTO COMERCIAL QUALIFICADO -->
+<section class="section" id="s7" data-n="07">
+  <div class="container">
+    <p class="eyebrow">07 — Atendimento comercial qualificado</p>
+    <h2 class="title wide">Mídia gera a oportunidade. Processo comercial desenvolve a oportunidade.</h2>
+
+    <div class="word-chain dense">
+      Abordagem <span class="arrow">→</span> Diagnóstico <span class="arrow">→</span> Qualificação <span class="arrow">→</span> Apresentação <span class="arrow">→</span> Follow-up <span class="arrow">→</span> Visita <span class="arrow">→</span> Negociação
+    </div>
+
+    <p class="lede" style="margin-top:36px;">A condução segue a experiência comercial e as estratégias já desenvolvidas e validadas por Lucas ao longo de sua trajetória no mercado imobiliário.</p>
+  </div>
+</section>
+
+<!-- 08 — INTELIGÊNCIA E GESTÃO -->
+<section class="section dark" id="s8" data-n="08">
+  <div class="container">
+    <p class="eyebrow">08 — Inteligência e gestão</p>
+    <h2 class="title wide">Dados que não apenas mostram resultados. Dados que direcionam decisões.</h2>
+    <p class="lede">Relatórios gerenciais semanais — o acompanhamento vai além dos números de mídia.</p>
+
+    <div class="word-chain dense">
+      Investimento <span class="arrow">→</span> Oportunidades <span class="arrow">→</span> Qualificação <span class="arrow">→</span> Atendimentos <span class="arrow">→</span> Visitas <span class="arrow">→</span> Propostas <span class="arrow">→</span> Vendas
+    </div>
+
+    <p class="lede" style="margin-top:36px; max-width:64ch;">O objetivo é entender o que está funcionando: quais mensagens geram melhores oportunidades, quais públicos têm mais qualidade, onde estão os gargalos e como as oportunidades evoluem — para saber onde investir e o que ajustar.</p>
+
+    <p class="quote-line">Não queremos descobrir o resultado no final do investimento. Queremos acompanhar, semana após semana, os indicadores que constroem o resultado.</p>
+  </div>
+</section>
+
+<!-- 09 — PREVISIBILIDADE COMERCIAL -->
+<section class="section" id="s9" data-n="09">
+  <div class="container">
+    <p class="eyebrow">09 — Previsibilidade comercial</p>
+    <h2 class="title wide">Construir previsibilidade sobre o processo comercial.</h2>
+
+    <div class="word-chain">
+      Executar <span class="arrow">→</span> Medir <span class="arrow">→</span> Analisar <span class="arrow">→</span> Ajustar <span class="arrow">→</span> Direcionar
+    </div>
+    <p class="loop-note">↻ de volta a executar</p>
+
+    <p class="lede" style="margin-top:36px;">O acompanhamento contínuo constrói, ciclo após ciclo, uma visão cada vez mais clara sobre a geração e a evolução das oportunidades.</p>
+
+    <p class="quote-line">Cada ciclo gera dados. Cada dado melhora a decisão. Cada decisão torna a operação mais eficiente.</p>
+  </div>
+</section>
+
+<!-- 10 — INVESTIMENTO INICIAL -->
+<section class="section dark" id="s10" data-n="10" style="text-align:center;">
+  <div class="container">
+    <p class="eyebrow">10 — Investimento inicial</p>
+    <div class="huge-figure">R$ 170/dia<span class="figure-secondary">R$ 5.000,00</span></div>
+    <p class="lede" style="margin:24px auto 0;">Verba inicial destinada à mídia para colocar a operação em mercado e iniciar a geração de dados e oportunidades.</p>
+
+    <div class="word-chain" style="margin:40px auto 0; justify-content:center;">
+      R$ 170/dia <span class="arrow">→</span> Execução <span class="arrow">→</span> Dados reais <span class="arrow">→</span> Decisão
+    </div>
+  </div>
+</section>
+
+<!-- 11 — ESCOPO DA PARCERIA -->
+<section class="section" id="s11" data-n="11">
+  <div class="container">
+    <p class="eyebrow">11 — Escopo da parceria</p>
+    <h2 class="title wide">O que compõe a operação.</h2>
+
+    <div class="scope-grid">
+      <div>
+        <h3>Investimento da incorporadora</h3>
+        <div class="huge-figure" style="font-size:clamp(40px,6vw,64px);">R$ 5.000</div>
+        <p class="lede" style="margin-top:12px; font-size:15px;">Verba inicial destinada à mídia.</p>
+      </div>
+      <div>
+        <h3>Estrutura da parceria</h3>
+        <ul class="plain-list">
+          <li>Estratégia comercial</li>
+          <li>Planejamento de mídia</li>
+          <li>Desenvolvimento de criativos</li>
+          <li>Landing Page</li>
+          <li>Estrutura de remarketing</li>
+          <li>Atendimento comercial</li>
+          <li>Acompanhamento das oportunidades</li>
+          <li>Relatórios gerenciais semanais</li>
+          <li>Análise e direcionamento da operação</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="quote-line">A incorporadora não está simplesmente entregando R$ 5.000 para anúncios. Ela está colocando R$ 5.000 de mídia dentro de uma estrutura comercial mais ampla.</p>
+  </div>
+</section>
+
+<!-- 12 — PRÓXIMOS PASSOS -->
+<section class="section dark" id="s12" data-n="12">
+  <div class="container">
+    <p class="eyebrow">12 — Próximos passos</p>
+    <h2 class="title wide">Os dados do primeiro ciclo orientam o próximo movimento.</h2>
+    <p class="lede">O primeiro investimento deverá ajudar a responder:</p>
+
+    <ul class="plain-list">
+      <li>Quais mensagens geram maior interesse?</li>
+      <li>Quais públicos geram oportunidades mais qualificadas?</li>
+      <li>Qual é o custo de geração de oportunidade?</li>
+      <li>Como essas oportunidades evoluem comercialmente?</li>
+      <li>Quais argumentos aproximam o cliente de uma visita?</li>
+      <li>Onde faz sentido concentrar os próximos investimentos?</li>
+    </ul>
+
+    <div class="word-chain">
+      Investimento <span class="arrow">→</span> Dados <span class="arrow">→</span> Inteligência <span class="arrow">→</span> Decisão
+    </div>
+
+    <p class="disclaimer">Se os indicadores justificarem continuidade ou ampliação, uma nova recomendação de investimento poderá ser apresentada.</p>
+  </div>
+</section>
+
+<!-- 13 — FECHAMENTO -->
+<footer class="cta" id="s13" data-n="13">
+  <div class="container">
+    <p class="eyebrow">13 — Fechamento</p>
+    <h2>Halsten <span class="x">×</span> Lucas Brümmer</h2>
+    <p class="quote-line">Uma parceria comercial que conecta produto, estratégia, comunicação, atendimento e inteligência para desenvolver novas oportunidades de negócio.</p>
+    <div class="word-list">
+      <span>Estratégia</span><span>Mídia</span><span>Tecnologia</span><span>Atendimento</span><span>Dados</span><span>Vendas</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[data-n], footer[data-n]');
+  const counter = document.getElementById('secNow');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) counter.textContent = e.target.dataset.n;
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
