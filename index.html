@@ -833,7 +833,10 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">Fechar ✕</button>
+  <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Foto anterior">‹</button>
   <img class="wide" id="lightboxImg" src="" alt="">
+  <button class="lightbox-arrow next" id="lightboxNext" aria-label="Próxima foto">›</button>
+  <span class="lightbox-count" id="lightboxCount"></span>
 </div>
 
 <script>
@@ -848,19 +851,47 @@
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  function openLightbox(img) {
+  const lightboxCount = document.getElementById('lightboxCount');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  let lightboxItems = [];
+  let lightboxIndex = 0;
+
+  function showLightboxItem(i) {
+    lightboxIndex = (i + lightboxItems.length) % lightboxItems.length;
+    const img = lightboxItems[lightboxIndex];
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
+    const multi = lightboxItems.length > 1;
+    lightboxPrev.style.display = multi ? '' : 'none';
+    lightboxNext.style.display = multi ? '' : 'none';
+    lightboxCount.style.display = multi ? '' : 'none';
+    lightboxCount.textContent = multi ? (lightboxIndex + 1) + ' / ' + lightboxItems.length : '';
+  }
+  function openLightbox(items, index) {
+    lightboxItems = items;
+    showLightboxItem(index);
     lightbox.classList.add('open');
   }
   function closeLightbox() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
-  document.getElementById('s8MediaBtn').addEventListener('click', (e) => openLightbox(e.currentTarget.querySelector('img')));
-  document.querySelectorAll('.trophy-wall .story-item').forEach(btn => {
-    btn.addEventListener('click', (e) => openLightbox(e.currentTarget.querySelector('img')));
+
+  document.getElementById('s8MediaBtn').addEventListener('click', (e) => openLightbox([e.currentTarget.querySelector('img')], 0));
+
+  const trophyImgs = Array.from(document.querySelectorAll('.trophy-wall .story-item img'));
+  document.querySelectorAll('.trophy-wall .story-item').forEach((btn, i) => {
+    btn.addEventListener('click', () => openLightbox(trophyImgs, i));
   });
+
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showLightboxItem(lightboxIndex - 1); });
+  lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showLightboxItem(lightboxIndex + 1); });
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showLightboxItem(lightboxIndex - 1);
+    if (e.key === 'ArrowRight') showLightboxItem(lightboxIndex + 1);
+  });
 
   function wireGalleryArrows(scrollerId, prevId, nextId) {
     const gallery = document.getElementById(scrollerId);
