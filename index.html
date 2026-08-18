@@ -364,6 +364,7 @@
   }
   .lightbox.open { display: flex; }
   .lightbox img { max-width: min(92vw, 480px); max-height: 90vh; width: auto; height: auto; border-radius: 10px; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6); }
+  .lightbox img.wide { max-width: min(92vw, 680px); }
   .lightbox-close {
     position: absolute; top: 22px; right: clamp(22px, 6vw, 64px);
     color: #F2EEE3; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;
@@ -388,6 +389,23 @@
   .lightbox-count {
     position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
     color: rgba(242,238,227,0.7); font-size: 12px; letter-spacing: 0.08em;
+  }
+
+  /* ===== s8 split (text + clickable report image, image sets the column height) ===== */
+  .s8-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(32px, 5vw, 64px); }
+  .s8-media {
+    cursor: zoom-in; border: none; background: none; padding: 0; display: block; width: 100%; height: 100%;
+    min-height: 320px;
+  }
+  .s8-media img {
+    width: 100%; height: 100%; display: block; object-fit: contain; object-position: top center;
+    border-radius: 10px; border: 1px solid var(--dark-line);
+    box-shadow: 0 30px 60px -30px rgba(0,0,0,0.5);
+  }
+  @media (max-width: 860px) {
+    .s8-grid { grid-template-columns: 1fr; }
+    .s8-media { order: -1; max-width: 340px; margin: 0 auto; height: auto; }
+    .s8-media img { height: auto; object-fit: initial; }
   }
 
   /* ===== trophy wall (portrait + landscape achievement photos, unified tone) ===== */
@@ -675,17 +693,25 @@
 <!-- 08 — INTELIGÊNCIA E GESTÃO -->
 <section class="section dark" id="s8" data-n="08">
   <div class="container">
-    <p class="eyebrow">08 — Inteligência e gestão</p>
-    <h2 class="title wide">Dados que não apenas mostram resultados. Dados que direcionam decisões.</h2>
-    <p class="lede">Relatórios gerenciais semanais — o acompanhamento vai além dos números de mídia.</p>
+    <div class="s8-grid">
+      <div>
+        <p class="eyebrow">08 — Inteligência e gestão</p>
+        <h2 class="title wide">Dados que não apenas mostram resultados. Dados que direcionam decisões.</h2>
+        <p class="lede">Relatórios gerenciais semanais — o acompanhamento vai além dos números de mídia.</p>
 
-    <div class="word-chain dense">
-      Investimento <span class="arrow">→</span> Oportunidades <span class="arrow">→</span> Qualificação <span class="arrow">→</span> Atendimentos <span class="arrow">→</span> Visitas <span class="arrow">→</span> Propostas <span class="arrow">→</span> Vendas
+        <div class="word-chain dense">
+          Investimento <span class="arrow">→</span> Oportunidades <span class="arrow">→</span> Qualificação <span class="arrow">→</span> Atendimentos <span class="arrow">→</span> Visitas <span class="arrow">→</span> Propostas <span class="arrow">→</span> Vendas
+        </div>
+
+        <p class="lede" style="margin-top:36px;">O objetivo é entender o que está funcionando: quais mensagens geram melhores oportunidades, quais públicos têm mais qualidade, onde estão os gargalos e como as oportunidades evoluem — para saber onde investir e o que ajustar.</p>
+
+        <p class="quote-line">Não queremos descobrir o resultado no final do investimento. Queremos acompanhar, semana após semana, os indicadores que constroem o resultado.</p>
+      </div>
+
+      <button class="s8-media" id="s8MediaBtn" aria-label="Ampliar exemplo de relatório executivo">
+        <img src="img/relatorio-executivo.png" alt="Exemplo de relatório executivo comercial e marketing, com leads, funil comercial, desempenho por canal e evolução de resultados">
+      </button>
     </div>
-
-    <p class="lede" style="margin-top:36px; max-width:64ch;">O objetivo é entender o que está funcionando: quais mensagens geram melhores oportunidades, quais públicos têm mais qualidade, onde estão os gargalos e como as oportunidades evoluem — para saber onde investir e o que ajustar.</p>
-
-    <p class="quote-line">Não queremos descobrir o resultado no final do investimento. Queremos acompanhar, semana após semana, os indicadores que constroem o resultado.</p>
   </div>
 </section>
 
@@ -787,6 +813,11 @@
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">Fechar ✕</button>
+  <img class="wide" id="lightboxImg" src="" alt="">
+</div>
+
 <script>
   const sections = document.querySelectorAll('section[data-n], footer[data-n]');
   const counter = document.getElementById('secNow');
@@ -796,6 +827,21 @@
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
   sections.forEach(s => obs.observe(s));
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const s8MediaBtn = document.getElementById('s8MediaBtn');
+  function openLightbox() {
+    const img = s8MediaBtn.querySelector('img');
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
+  s8MediaBtn.addEventListener('click', openLightbox);
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
