@@ -229,6 +229,10 @@
   .section.dark .word-chain .arrow { color: var(--gold-bright); }
   .word-chain strong { color: var(--ink); }
   .section.dark .word-chain strong { color: var(--dark-ink); }
+  @media (max-width: 700px) {
+    .word-chain { text-align: center; max-width: none; }
+    .loop-note { text-align: center; }
+  }
   .loop-note { margin-top: 10px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
   .section.dark .loop-note { color: var(--dark-ink-soft); }
 
