@@ -412,24 +412,37 @@
     .s8-media img { height: auto; object-fit: initial; }
   }
 
-  /* ===== trophy wall (portrait + landscape achievement photos, unified tone) ===== */
+  /* ===== trophy wall (swipeable gallery, portrait + landscape achievement photos, unified tone) ===== */
+  .trophy-wall-wrap { position: relative; margin-top: 64px; }
   .trophy-wall {
-    margin-top: 64px;
-    display: grid;
-    grid-template-columns: 1fr 1.7fr;
-    grid-auto-rows: clamp(260px, 28vw, 380px);
-    gap: 26px 22px;
+    display: flex;
+    gap: 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-ink) transparent;
   }
-  .trophy-wall figure { margin: 0; height: 100%; display: flex; flex-direction: column; }
+  .trophy-wall::-webkit-scrollbar { height: 6px; }
+  .trophy-wall::-webkit-scrollbar-thumb { background: var(--dark-line); border-radius: 999px; }
+  .trophy-wall figure { margin: 0; flex: 0 0 auto; width: clamp(220px, 30vw, 300px); scroll-snap-align: start; }
+  .trophy-wall .story-item {
+    display: block; width: 100%; aspect-ratio: 4/5; padding: 0; border: none; background: none;
+    cursor: zoom-in; border-radius: 14px; overflow: hidden;
+  }
+  .trophy-wall .story-item:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
   .trophy-wall img {
     width: 100%;
-    flex: 1;
-    min-height: 0;
+    height: 100%;
     object-fit: cover;
     border: 1px solid var(--dark-line);
     border-radius: 14px;
     filter: grayscale(0.45) saturate(0.85) sepia(0.06) contrast(1.05);
+    display: block;
+    transition: transform 0.35s ease;
   }
+  .trophy-wall .story-item:hover img { transform: scale(1.04); }
   .trophy-wall figcaption { margin-top: 14px; }
   .trophy-wall figcaption .tag {
     display: block;
@@ -437,10 +450,6 @@
     color: var(--gold-bright); margin-bottom: 4px;
   }
   .trophy-wall figcaption .desc { font-size: 12.5px; color: var(--dark-ink-soft); line-height: 1.5; }
-  @media (max-width: 700px) {
-    .trophy-wall { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 30px; }
-    .trophy-wall img { aspect-ratio: 4/3.3; flex: none; }
-  }
 
   .territory-line {
     margin-top: 22px;
@@ -573,32 +582,37 @@
 
     <p class="quote-line full-line">Experiência em gestão, vendas e desenvolvimento comercial aplicada diretamente à comercialização da Halsten.</p>
 
-    <div class="trophy-wall">
-      <figure>
-        <img src="img/lucas-conquista-trofeu.jpg" alt="Lucas Brümmer premiado com troféu de reconhecimento em cerimônia do setor" style="object-position: center top;">
-        <figcaption><span class="tag">Reconhecimento individual</span><span class="desc">Prêmio de destaque em cerimônia do setor imobiliário.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="img/lucas-conquista-gerente-campeao.jpg" alt="Lucas Brümmer recebendo o prêmio Gerente Campeão da VEXT Imob, cheque de R$ 10.000 no palco do VEXT Day">
-        <figcaption><span class="tag">Gerente Campeão — VEXT Imob</span><span class="desc">Prêmio de R$ 10.000 pela liderança da equipe campeã em vendas.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="img/lucas-conquista-arium.jpg" alt="Lucas Brümmer, corretor campeão de vendas Arium e Nola, com passagem premiada para Copenhague e Londres">
-        <figcaption><span class="tag">Corretor campeão — Arium &amp; Nola</span><span class="desc">Viagem premiada a Copenhague e Londres.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="img/lucas-equipe-podio.jpg" alt="Equipe formada e liderada por Lucas Brümmer na VEXT Imob, celebrando o 1º lugar em vendas">
-        <figcaption><span class="tag">Equipe liderada por Lucas</span><span class="desc">1º lugar em vendas na VEXT Imob.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="img/lucas-viagem-jan-gehl.jpg" alt="Lucas Brümmer em visita ao escritório do arquiteto Jan Gehl em Copenhagen, Dinamarca">
-        <figcaption><span class="tag">Escritório Jan Gehl — Copenhagen</span><span class="desc">Visita ao escritório de Jan Gehl, na Dinamarca.</span></figcaption>
-      </figure>
-      <figure>
-        <img src="img/lucas-viagem-canton-fair.jpg" alt="Lucas Brümmer em visita à Canton Fair em Guangzhou, China">
-        <figcaption><span class="tag">Canton Fair — Guangzhou</span><span class="desc">Visita à Canton Fair, na China.</span></figcaption>
-      </figure>
+    <div class="trophy-wall-wrap">
+      <button class="gallery-arrow prev" id="s2GalleryPrev" aria-label="Foto anterior" disabled>‹</button>
+      <div class="trophy-wall" id="s2Gallery">
+        <figure>
+          <button class="story-item"><img src="img/lucas-conquista-trofeu.jpg" alt="Lucas Brümmer premiado com troféu de reconhecimento em cerimônia do setor" style="object-position: center top;"></button>
+          <figcaption><span class="tag">Reconhecimento individual</span><span class="desc">Prêmio de destaque em cerimônia do setor imobiliário.</span></figcaption>
+        </figure>
+        <figure>
+          <button class="story-item"><img src="img/lucas-conquista-gerente-campeao.jpg" alt="Lucas Brümmer recebendo o prêmio Gerente Campeão da VEXT Imob, cheque de R$ 10.000 no palco do VEXT Day"></button>
+          <figcaption><span class="tag">Gerente Campeão — VEXT Imob</span><span class="desc">Prêmio de R$ 10.000 pela liderança da equipe campeã em vendas.</span></figcaption>
+        </figure>
+        <figure>
+          <button class="story-item"><img src="img/lucas-conquista-arium.jpg" alt="Lucas Brümmer, corretor campeão de vendas Arium e Nola, com passagem premiada para Copenhague e Londres"></button>
+          <figcaption><span class="tag">Corretor campeão — Arium &amp; Nola</span><span class="desc">Viagem premiada a Copenhague e Londres.</span></figcaption>
+        </figure>
+        <figure>
+          <button class="story-item"><img src="img/lucas-equipe-podio.jpg" alt="Equipe formada e liderada por Lucas Brümmer na VEXT Imob, celebrando o 1º lugar em vendas"></button>
+          <figcaption><span class="tag">Equipe liderada por Lucas</span><span class="desc">1º lugar em vendas na VEXT Imob.</span></figcaption>
+        </figure>
+        <figure>
+          <button class="story-item"><img src="img/lucas-viagem-jan-gehl.jpg" alt="Lucas Brümmer em visita ao escritório do arquiteto Jan Gehl em Copenhagen, Dinamarca"></button>
+          <figcaption><span class="tag">Escritório Jan Gehl — Copenhagen</span><span class="desc">Visita ao escritório de Jan Gehl, na Dinamarca.</span></figcaption>
+        </figure>
+        <figure>
+          <button class="story-item"><img src="img/lucas-viagem-canton-fair.jpg" alt="Lucas Brümmer em visita à Canton Fair em Guangzhou, China"></button>
+          <figcaption><span class="tag">Canton Fair — Guangzhou</span><span class="desc">Visita à Canton Fair, na China.</span></figcaption>
+        </figure>
+      </div>
+      <button class="gallery-arrow next" id="s2GalleryNext" aria-label="Próxima foto">›</button>
     </div>
+    <p class="gallery-hint">← Arraste ou use as setas para ver mais fotos · Toque para ampliar →</p>
   </div>
 </section>
 
@@ -834,18 +848,38 @@
 
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const s8MediaBtn = document.getElementById('s8MediaBtn');
-  function openLightbox() {
-    const img = s8MediaBtn.querySelector('img');
+  function openLightbox(img) {
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
     lightbox.classList.add('open');
   }
   function closeLightbox() { lightbox.classList.remove('open'); lightboxImg.src = ''; }
-  s8MediaBtn.addEventListener('click', openLightbox);
+  document.getElementById('s8MediaBtn').addEventListener('click', (e) => openLightbox(e.currentTarget.querySelector('img')));
+  document.querySelectorAll('.trophy-wall .story-item').forEach(btn => {
+    btn.addEventListener('click', (e) => openLightbox(e.currentTarget.querySelector('img')));
+  });
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  function wireGalleryArrows(scrollerId, prevId, nextId) {
+    const gallery = document.getElementById(scrollerId);
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    if (!gallery || !prevBtn || !nextBtn) return;
+    const step = () => gallery.querySelector('figure, .story-item').offsetWidth + 22;
+    const updateArrows = () => {
+      const max = gallery.scrollWidth - gallery.clientWidth - 2;
+      prevBtn.disabled = gallery.scrollLeft <= 6;
+      nextBtn.disabled = gallery.scrollLeft >= max;
+    };
+    prevBtn.addEventListener('click', () => { gallery.scrollBy({ left: -step(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
+    nextBtn.addEventListener('click', () => { gallery.scrollBy({ left: step(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
+    gallery.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  }
+  wireGalleryArrows('s2Gallery', 's2GalleryPrev', 's2GalleryNext');
 </script>
 
 </body>
